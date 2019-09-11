@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use IlLuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Usuario;
+use App\Telefones;
 use App\LivroUsuario;
 use App\Helpers\CriadorTelefones;
 use App\Helpers\ExclusaoUsuario;
@@ -71,6 +72,16 @@ class usuarioController extends Controller
 			);
 
 		return redirect('/login');
+	}
+
+	public function addTelefone(Request $request){
+		$id_usuario = $request->id_usuario;
+		$telefone = $request->telefone;
+
+		Telefones::create([
+			'numero' => $telefone,
+			'usuario_id' => $id_usuario
+		]);
 	}
 
 	public function usuario(Request $request)

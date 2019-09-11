@@ -11,7 +11,8 @@ class Telefones extends Model
     public $timestamps = false;
 
     protected $fillable = [
-    	'numero'
+    	'numero',
+        'usuario_id'
     ];
 
     public function contato()

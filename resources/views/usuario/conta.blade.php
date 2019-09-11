@@ -8,7 +8,7 @@
 @section('conteudo')
 <div>
 	<ul class="list-group">
-		<li class="list-group-item text-capitalize"><b>id:</b> {{  $usuario->id }}</li>
+		<li class="list-group-item text-capitalize"><b>id:</b><p id="id_usuario">{{  $usuario->id }}</p></li>
 		<li class="list-group-item text-capitalize"><b>nome:</b> {{  $usuario->nome }}</li>
 		<li class="list-group-item text-capitalize"><b>senha:</b> {{  $usuario->senha }}</li>
 		<li class="list-group-item text-capitalize"><b>cpf:</b> {{  $usuario->cpf }}</li>
@@ -30,12 +30,16 @@
 			</div>
 		</li>
 	@endforeach
+
+		<input type="hidden" id="qtd_telefone" value="0">
 		<p id="p-telefone"></p>
 		
 	</ul>
-	<div class="btn btn-primary" id="add-telefone" class="add-botao"><i class="fa fa-plus"></i></div>
-	<div class="btn btn-dark" id="excluir-telefone"><i class="fa fa-minus"></i></div>
-	<div class="btn btn-primary text-capitalize float-right" id="inserir-telefone">inserir</div>
+
+		@csrf
+		<div class="btn btn-primary" id="add-telefone" class="add-botao"><i class="fa fa-plus"></i></div>
+		<div class="btn btn-dark" id="excluir-telefone"><i class="fa fa-minus"></i></div>
+		<div class="btn btn-primary text-capitalize float-right" id="inserir-telefone">inserir</div>
 
 	<h4 class="text-capitalize py-2 my-2 bg-dark text-white px-2">emails</h4>
 	<ul class="list-group my-2">

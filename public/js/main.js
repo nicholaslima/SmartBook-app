@@ -48,3 +48,8 @@ $('#btn-livro-atualizar').click(function(){
  	},200);
 });
 
+
+$('#inserir-telefone').click(function(){
+	var contato = new ContatosController();
+	contato.inserir_telefone();
+});

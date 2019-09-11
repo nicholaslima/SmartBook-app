@@ -7,7 +7,6 @@ function ContatosController()
 	this.qtd_Email = $('#qtd_email');
 	this.qtd_telefone = $('#qtd_telefone');
 
-	
 	this.add_email = function(){
 		num_email++;
 		contagem = num_email;
@@ -38,5 +37,37 @@ function ContatosController()
 			num_telefone--;
 			this.qtd_telefone.val(num_telefone);
 		}	
+	}
+
+	this.inserir_telefone = function(){
+		num_telefones = this.qtd_telefone.val();
+
+		for(var i = 1;i <= num_telefones; i++){
+			
+			inputTelefone = $("#telefone-"+i);
+			elementoId = $('#id_usuario');
+			inputToken = $('input[name=_token]');
+
+			var telefone = {
+					id_usuario: elementoId.text(),
+					telefone: inputTelefone.val(),
+					_token: inputToken.val()
+				};
+
+			$.ajax({
+				type: "POST",
+				url: "/inserir_telefone",
+				data: telefone,
+				beforeSend:function(){
+					console.log("enviando");
+				}
+			})
+			.done(function(){
+				console.log("sucesso");
+			})
+			.fail(function(){
+				console.log("falha");
+			});		
+		}
 	}
 }
