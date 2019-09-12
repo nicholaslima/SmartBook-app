@@ -6,6 +6,7 @@ function ContatosController()
 
 	this.qtd_Email = $('#qtd_email');
 	this.qtd_telefone = $('#qtd_telefone');
+	this.inputToken = $('input[name=_token]');
 
 	this.add_email = function(){
 		num_email++;
@@ -63,11 +64,40 @@ function ContatosController()
 				}
 			})
 			.done(function(){
-				console.log("sucesso");
+				setMsg('telefone cadastrado com sucesso','alert-success')
 			})
 			.fail(function(){
-				console.log("falha");
+				setMsg('falha erro no cadastro do telefone', 'alert-danger');
 			});		
 		}
+	}
+
+
+	this.deletar_telefone = function(id,li)
+	{
+		inputToken = $('input[name=_token]');
+
+		$.ajax({
+			type: 'post',
+			data: {
+				id_telefone: id,
+				_token: inputToken.val()
+			},
+			url: '/excluir_telefone',
+			beforeSend:function(){
+				console.log("enviando");
+			}
+		})
+		.done(function(){
+			li.remove();
+			setMsg('telefone deletado com sucesso','alert-success');
+		})
+		.fail(function(){
+			setMsg('falha ao deletar o telefone','alert-danger');
+		})
+	}
+
+	this.form_atualizar = function(){
+
 	}
 }

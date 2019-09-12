@@ -18,17 +18,6 @@ function ajax(){
 				enviando();
 			}
 		})
-		.done(function(){
-			$(".fa-spinner").remove();
-			textoBtnInserir.text('cadastrar');
-			apagarForm();
-			setMsg('livro '+livro.titulo+' foi cadastrado com sucesso','alert-info');
-		})
-		.fail(function(){
-			$(".fa-spinner").remove();
-			textoBtnInserir.text('cadastrar');
-			setMsg('falha ao enviar uma requisição','alert-info');
-		})
 	}
 
 }

@@ -53,3 +53,11 @@ $('#inserir-telefone').click(function(){
 	var contato = new ContatosController();
 	contato.inserir_telefone();
 });
+
+
+$('.deletar_telefone').click(function(){
+	id = $(this).children('p').text();
+	li = $(this).parentsUntil('ul');
+	var contato = new ContatosController();
+	contato.deletar_telefone(id,li);
+});

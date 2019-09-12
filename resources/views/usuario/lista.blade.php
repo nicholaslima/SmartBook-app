@@ -2,7 +2,7 @@
 @extends('layout');
 
 @section('titulo')
-	<h1>lista de usuarios</h1>
+	<h1 class="titulo">lista de usuarios</h1>
 @endsection
 
 @section('conteudo')

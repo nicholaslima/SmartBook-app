@@ -2,22 +2,65 @@
 @extends('layout')
 
 @section('titulo')
-	<h1>gerenciar usuario {{ $usuario->nome }} </h1>
+	<h3 class="titulo my-4 ">usuario {{ $usuario->nome }} </h3>
 @endsection
 
 @section('conteudo')
-<div>
-	<ul class="list-group">
-		<li class="list-group-item text-capitalize"><b>id:</b><p id="id_usuario">{{  $usuario->id }}</p></li>
-		<li class="list-group-item text-capitalize"><b>nome:</b> {{  $usuario->nome }}</li>
-		<li class="list-group-item text-capitalize"><b>senha:</b> {{  $usuario->senha }}</li>
-		<li class="list-group-item text-capitalize"><b>cpf:</b> {{  $usuario->cpf }}</li>
-		<li class="list-group-item text-capitalize"><b>endereço:</b> {{  $usuario->endereco }}</li>
-		<li class="list-group-item text-capitalize"><b>bairro:</b> {{  $usuario->bairro }}</li>
-		<li class="list-group-item text-capitalize"><b>cidade:</b> {{  $usuario->cidade }}</li>
-		<li class="list-group-item text-capitalize"><b>estado:</b> {{  $usuario->estado }}</li>
+<div class="m-2">
+	<ul class="list-group col-md-9">
+		<li class="list-group-item text-capitalize">
+			<div class="row d-flex justify-content-around">
+				<b>id:</b>
+				<p id="id_usuario">{{  $usuario->id }}</p>
+			</div>
+		</li>
+
+		<li class="list-group-item ">
+			<div class="row d-flex justify-content-around">
+				<b >nome</b>
+				<p id="nome">{{  $usuario->nome }}</p>
+			</div>
+		</li>
+		<li class="list-group-item text-capitalize">
+			<div class="row d-flex justify-content-around">
+				<b>senha:</b> 
+				<p id="senha">{{  $usuario->senha }}</p>
+			</div>
+		</li>
+		<li class="list-group-item text-capitalize">
+			<div class="row d-flex justify-content-around">
+				<b>cpf:</b> 
+				<p id="cpf">{{  $usuario->cpf }}</p>
+			</div>
+		</li>
+		<li class="list-group-item text-capitalize">
+			<div class="row d-flex justify-content-around">
+				<b>endereço:</b> 
+				<p id="endereco">{{  $usuario->endereco }}</p>
+			</div>
+		</li>
+		<li class="list-group-item text-capitalize">
+			<div class="row d-flex justify-content-around">
+				<b>bairro:</b> 
+				<p id="bairro">{{  $usuario->bairro }}</p>
+			</div>
+		</li>
+		<li class="list-group-item text-capitalize">
+			<div class="row d-flex justify-content-around">
+				<b>cidade:</b> 
+				<p id="cidade">{{  $usuario->cidade }}</p>
+			</div>
+		</li>
+		<li class="list-group-item text-capitalize">
+			<div class="row d-flex justify-content-around">
+				<b>estado:</b> 
+				<p id="estado">{{  $usuario->estado }}</p>
+			</div>
+		</li>
 	</ul>
-		<h2 class="text-capitalize py-2 my-2 bg-dark text-white px-2">telefones</h2>
+
+	<div class="btn-azul my-3" id="atualizar">atualizar</div>
+	<h5 class="text-capitalize p-3 my-3 bg-dark text-white rounded">telefones</h5>
 	<ul class="list-group my-2">
 	@foreach($telefones as $telefone)
 		<li class="list-group-item text-capitalize d-flex justify-content-between">
@@ -25,7 +68,27 @@
 				<b>telefone:</b> {{  $telefone->numero }}
 			</div>
 			<div>
-				<div class="btn btn-primary" id="deletar">deletar</div>
+				<div class="btn btn-primary" data-toggle="modal" data-target="#modal-excluir-telefone">deletar</div>
+
+				<div class="modal fade" id="modal-excluir-telefone">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<p class="modal-title">exclusão</p>
+							</div>
+							<div class="modal-body">
+								<p class="modal-title">confirma exclusão do telefone?</p>
+							</div>
+							<div class="modal-footer">
+								<div class="btn btn-primary deletar_telefone" id="id_telefone_<?php echo $telefone->id ?>" data-toggle="modal" data-target="#modal-excluir-telefone">deletar
+									<p class="d-none invisible">{{ $telefone->id }}</p>
+								</div>
+								<button class="btn btn-dark  col-md-2" data-dismiss="modal">fechar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="btn btn-dark" id="atualizar">atualizar</div>
 			</div>
 		</li>
@@ -33,7 +96,7 @@
 
 		<input type="hidden" id="qtd_telefone" value="0">
 		<p id="p-telefone"></p>
-		
+		<p class="msg d-none invisible alert"></p>
 	</ul>
 
 		@csrf
@@ -41,7 +104,7 @@
 		<div class="btn btn-dark" id="excluir-telefone"><i class="fa fa-minus"></i></div>
 		<div class="btn btn-primary text-capitalize float-right" id="inserir-telefone">inserir</div>
 
-	<h4 class="text-capitalize py-2 my-2 bg-dark text-white px-2">emails</h4>
+	<h5 class="text-capitalize p-3 my-3 bg-dark text-white rounded">emails</h5>
 	<ul class="list-group my-2">
 	@foreach($emails as $email)
 		<li class="list-group-item text-capitalize d-flex justify-content-between">
@@ -58,18 +121,10 @@
 
 
 
-	<div class="my-2 float-right row">
-		<button class="btn btn-danger text-capitalize btn-lg mx-1" data-target="#modal-excluir" data-toggle="modal">deletar</button>
-		<form action="/" method="post">
-			@csrf
-			<input type="hidden" value="{{ $usuario->id  }}" name="id">
-			<button type="submit" class="btn btn-primary text-capitalize btn-lg">atualizar</div>
-		</form>
-		
-	</div>
 
+	<button class="btn btn-danger text-capitalize btn-lg mx-1" data-target="#modal-excluir-usuario" data-toggle="modal">deletar</button>
 
-	<div class="modal fade" id="modal-excluir">
+	<div class="modal fade" id="modal-excluir-usuario">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 					<div class="modal-header">

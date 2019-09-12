@@ -84,6 +84,14 @@ class usuarioController extends Controller
 		]);
 	}
 
+	public function excluirTelefone(Request $request){
+		$id = $request->id_telefone;
+
+		$telefone = Telefones::find($id);
+
+		$telefone->delete();
+	}
+
 	public function usuario(Request $request)
 	{
 		$usuario = Usuario::find($request->id);

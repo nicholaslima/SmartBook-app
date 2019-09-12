@@ -8,7 +8,7 @@
 
 
 @section('conteudo')
-		<form method= "POST" action="/login" class="form-cad d-flex flex-column align-items-center">
+		<form method= "POST" action="/login" class="form-cad d-flex flex-column ">
 			<div class="form-inline">
 				@csrf
 				<label class="text-capitalize col-md-2">Login:</label> 
@@ -20,9 +20,9 @@
 				<input type="password" size="55px" name="senha"  class="form-control col-md-10"  required>
 			</div>
 
-			<div class="mx-auto">
-				<input class="btn-login-azul" type="submit" value="entrar"> 
-				<input class="btn-apagar-red" type="reset" value="apagar"> 
+			<div class="my-3">
+				<input class="btn-azul" type="submit" value="entrar"> 
+				<input class="btn-red" type="reset" value="apagar"> 
 			</div>
 		</form> 
 @endsection
