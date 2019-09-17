@@ -54,10 +54,24 @@ $('#inserir-telefone').click(function(){
 	contato.inserir_telefone();
 });
 
+listaQtd = $('#qtd_lista_telefone');
+qtd = listaQtd.text();
 
-$('.deletar_telefone').click(function(){
+
+$('.del').click(function(){
 	id = $(this).children('p').text();
+	$(this).fadeOut('slow');
 	li = $(this).parentsUntil('ul');
+	console.log(id);
+});
+
+
+$('#atualizar').click(function(){
 	var contato = new ContatosController();
-	contato.deletar_telefone(id,li);
+	contato.form_atualizar();
+});
+
+$("#salvar-alteracao-usuario").click(function(){
+	var contato = new ContatosController();
+	contato.atualizar_usuario();
 });

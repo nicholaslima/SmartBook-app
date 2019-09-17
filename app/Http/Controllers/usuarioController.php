@@ -107,6 +107,21 @@ class usuarioController extends Controller
 
 	}
 
+	public function update(Request $request)
+	{
+		$usuario = Usuario::find($request->id);
+
+		$usuario->nome = $request->nome;
+		$usuario->senha = $request->senha;
+		$usuario->cpf = $request->cpf;
+		$usuario->endereco = $request->endereco;
+		$usuario->bairro = $request->bairro;
+		$usuario->cidade = $request->cidade;
+		$usuario->estado = $request->estado;
+
+		$usuario->save();
+	}
+
 	public function destroy(Request $request)
 	{
 		$id = $request->id;

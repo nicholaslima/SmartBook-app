@@ -99,6 +99,15 @@ header .topo a.icone_menu:hover i {
   margin-left: 55px;
 }
 
+.msg {
+  left: 100px;
+  bottom: 0px;
+  width: 950px;
+  display: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+}
+
 .titulo {
   font-family: Montserrat Alternates;
   margin-bottom: 20px;

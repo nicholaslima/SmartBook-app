@@ -59,16 +59,21 @@
 		</li>
 	</ul>
 
-	<div class="btn-azul my-3" id="atualizar">atualizar</div>
+	<div class="row" id="btns-alteracao">
+		<div class="btn-azul my-3 mr-2" id="atualizar">atualizar</div>
+		<div class="btn btn-dark rounded-pill my-3 mr-2 px-4" id="salvar-alteracao-usuario">salvar</div>
+	</div>
+	
 	<h5 class="text-capitalize p-3 my-3 bg-dark text-white rounded">telefones</h5>
-	<ul class="list-group my-2">
+	<ul class="list-group my-2" id="lista-telefones">
+	<?php $i = 0; ?>
 	@foreach($telefones as $telefone)
 		<li class="list-group-item text-capitalize d-flex justify-content-between">
 			<div>
 				<b>telefone:</b> {{  $telefone->numero }}
 			</div>
 			<div>
-				<div class="btn btn-primary" data-toggle="modal" data-target="#modal-excluir-telefone">deletar</div>
+				<div class="btn btn-primary del" data-toggle="modal" data-target="#modal-excluir-telefone">deletar</div>
 
 				<div class="modal fade" id="modal-excluir-telefone">
 					<div class="modal-dialog modal-dialog-centered">
@@ -80,7 +85,7 @@
 								<p class="modal-title">confirma exclusão do telefone?</p>
 							</div>
 							<div class="modal-footer">
-								<div class="btn btn-primary deletar_telefone" id="id_telefone_<?php echo $telefone->id ?>" data-toggle="modal" data-target="#modal-excluir-telefone">deletar
+								<div class="btn btn-primary deletar_telefone" id="" data-toggle="modal" data-target="#modal-excluir-telefone" >deletar
 									<p class="d-none invisible">{{ $telefone->id }}</p>
 								</div>
 								<button class="btn btn-dark  col-md-2" data-dismiss="modal">fechar</button>
@@ -91,14 +96,12 @@
 
 				<div class="btn btn-dark" id="atualizar">atualizar</div>
 			</div>
+			<?php $i++; ?>
 		</li>
 	@endforeach
-
 		<input type="hidden" id="qtd_telefone" value="0">
-		<p id="p-telefone"></p>
-		<p class="msg d-none invisible alert"></p>
 	</ul>
-
+		<p id="p-telefone"></p>
 		@csrf
 		<div class="btn btn-primary" id="add-telefone" class="add-botao"><i class="fa fa-plus"></i></div>
 		<div class="btn btn-dark" id="excluir-telefone"><i class="fa fa-minus"></i></div>

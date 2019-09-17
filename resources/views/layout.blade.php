@@ -46,7 +46,7 @@
 	</header>
 	<div class="row">
 		<div class="col-md-2">
-			<nav class="menu">
+			<nav class="menu ">
 				<a href="/" class="item_menu py-1 d-flex d-flex-row ">
 					<i class="fa fa-home p-2 fa-2x mt-2 ml-3"></i>
 					<p class="text-item invisible mt-3 d-none" >Home</p>
@@ -98,13 +98,17 @@
 		<div class="col-md-10">
 			@yield('titulo')
 			@yield('conteudo')
+
 		</div>
+		<p class="msg alert position-absolute position-fixed invisible"></p>
 	</div>
 	<script src="{{ asset('js/app.js') }}"></script>
 	<script src="{{ asset('js/jquery/dist/jquery.min.js') }}"></script>
 	<script src="{{ asset('js/Models/Contato.js') }}"></script>
 	<script src="{{ asset('js/Models/Livro.js') }}"></script>
+	<script src="{{ asset('js/Views/telefonesView.js') }}"></script>
 	<script src="{{ asset('js/Helper/alertas.js') }}"></script>
+	<script src="{{ asset('js/Helper/ajax.js') }}"></script>
 	<script src="{{ asset('js/Controllers/ContatosController.js') }}"></script>
 	<script src="{{ asset('js/Controllers/LivroController.js') }}"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
