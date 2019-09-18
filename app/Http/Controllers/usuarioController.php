@@ -92,6 +92,18 @@ class usuarioController extends Controller
 		$telefone->delete();
 	}
 
+	public function atualizar_telefone(Request $request){
+		$id = $request->id_telefone;
+		$id_usuario = $request->id_usuario;
+
+		$telefone = Telefones::find($id);
+
+		$telefone->usuario_id = $request->id_usuario;
+		$telefone->numero = $request->numero;
+
+		$telefone->save();
+	}
+
 	public function usuario(Request $request)
 	{
 		$usuario = Usuario::find($request->id);

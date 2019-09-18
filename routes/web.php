@@ -26,6 +26,7 @@ Route::post('/livros_pesquisa','livroController@pesquisa_Livros');
 Route::post('/inserir_telefone','usuarioController@addTelefone');
 Route::post('/atualizar_usuario','usuarioController@update');
 Route::post('/excluir_telefone','usuarioController@excluirTelefone');
+Route::post('/atualizar_telefone','usuarioController@atualizar_telefone');
 Route::get('/login', 'usuarioController@formulario_login');
 Route::get('/cadastro_usuario', 'usuarioController@formulario');
 Route::post('/inserir_usuario', 'usuarioController@store');

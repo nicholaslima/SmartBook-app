@@ -16,14 +16,13 @@ function Ajax(){
 			data: data,
 			beforeSend: function(){
 				console.log('enviando');
-				console.log(data);
 			}
 		})
 		.done(function(){
-			sucesso();
+			sucesso(data);
 		})
 		.fail(function(){
-			erro();
+			erro(data);
 		})
 	}
 

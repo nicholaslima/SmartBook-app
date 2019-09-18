@@ -8,5 +8,5 @@
 
 		setTimeout(function(){
 			msg.toggleClass('invisible '+alerta);	
-			},3000)
+			},5000)
 	}

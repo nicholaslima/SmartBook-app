@@ -110,6 +110,7 @@
 	<script src="{{ asset('js/Helper/alertas.js') }}"></script>
 	<script src="{{ asset('js/Helper/ajax.js') }}"></script>
 	<script src="{{ asset('js/Controllers/ContatosController.js') }}"></script>
+	<script src="{{ asset('js/Controllers/TelefonesController.js') }}"></script>
 	<script src="{{ asset('js/Controllers/LivroController.js') }}"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

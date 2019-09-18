@@ -17,7 +17,6 @@ function ContatosController()
 	this.idUsuarioElemento = $("#id_usuario");
 
 	ajax = new Ajax();	
-	telefoneObj = new telefonesView();
 
 	this.add_email = function(){
 		num_email++;
@@ -51,60 +50,6 @@ function ContatosController()
 		}	
 	}
 
-
-
-	this.inserir_telefone = function(){
-		num_telefones = this.qtd_telefone.val();
-
-		for(var i = 1;i <= num_telefones; i++){
-			
-			inputTelefone = $("#telefone-"+i);
-			elementoId = $('#id_usuario');
-			inputToken = $('input[name=_token]');
-
-			var telefone = {
-					id_usuario: elementoId.text(),
-					telefone: inputTelefone.val(),
-					_token: inputToken.val()
-				};
-
-			sucesso = function(){
-				linha = telefoneObj.getLinha(telefone);
-				$('.telefoneInput').remove();
-				$('#lista-telefones').append(linha);
-				setMsg("telefone inserido com sucesso","alert alert-success");
-			};	
-
-			erro = function(){
-				setMsg("erro ao enviar a requisição","alert alert-danger");
-			};
-
-			ajax.post('/inserir_telefone',telefone,sucesso,erro);
-		}
-	}
-
-
-	this.deletar_telefone = function(id,li)
-	{
-		inputToken = $('input[name=_token]');
-
-		telefone = {
-			id_telefone: id,
-			_token: inputToken.val()
-		}
-
-		sucesso = function(){
-			li.remove();
-			setMsg("telefone excluido com sucesso","alert alert-success");
-		};	
-
-		erro = function(){
-			setMsg("erro ao enviar a requisição","alert alert-danger");
-		};
-
-		ajax.post('/excluir_telefone',telefone,sucesso,erro);
-
-	}
 
 	this.form_atualizar = function(){
 		nome = this.nomeElemento.text();

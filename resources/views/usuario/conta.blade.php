@@ -66,37 +66,21 @@
 	
 	<h5 class="text-capitalize p-3 my-3 bg-dark text-white rounded">telefones</h5>
 	<ul class="list-group my-2" id="lista-telefones">
-	<?php $i = 0; ?>
 	@foreach($telefones as $telefone)
 		<li class="list-group-item text-capitalize d-flex justify-content-between">
-			<div>
-				<b>telefone:</b> {{  $telefone->numero }}
+			<div class="d-flex row justify-content-between flex-fill">
+				<b class="item-telefone">telefone:</b>
+				<p class="telefone">{{  $telefone->numero }}</p> 
+				<div class="btn btn-primary mr-4 alterar-telefone"><i class="fa fa-plus"></i></div>
 			</div>
 			<div>
-				<div class="btn btn-primary del" data-toggle="modal" data-target="#modal-excluir-telefone">deletar</div>
-
-				<div class="modal fade" id="modal-excluir-telefone">
-					<div class="modal-dialog modal-dialog-centered">
-						<div class="modal-content">
-							<div class="modal-header">
-								<p class="modal-title">exclusão</p>
-							</div>
-							<div class="modal-body">
-								<p class="modal-title">confirma exclusão do telefone?</p>
-							</div>
-							<div class="modal-footer">
-								<div class="btn btn-primary deletar_telefone" id="" data-toggle="modal" data-target="#modal-excluir-telefone" >deletar
-									<p class="d-none invisible">{{ $telefone->id }}</p>
-								</div>
-								<button class="btn btn-dark  col-md-2" data-dismiss="modal">fechar</button>
-							</div>
-						</div>
-					</div>
+				<div class="btn btn-primary deletar-telefone">deletar
+					<p class="d-none invisible id_telefone">{{ $telefone->id }}</p>
 				</div>
 
-				<div class="btn btn-dark" id="atualizar">atualizar</div>
+				<div class="btn btn-dark atualizar-telefone">atualizar	
+				</div>
 			</div>
-			<?php $i++; ?>
 		</li>
 	@endforeach
 		<input type="hidden" id="qtd_telefone" value="0">

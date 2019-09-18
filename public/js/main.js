@@ -12,13 +12,13 @@ $('#excluir-email').click(function(){
 });
 
 $('#add-telefone').click(function(){
-	const contato = new ContatosController();
-	contato.add_telefone();
+	var controller = new TelefonesController();
+	controller.add_telefone();
 });
 
 $('#excluir-telefone').click(function(){
-	const contato = new ContatosController();
-	contato.excluir_telefone();	
+	var controller = new TelefonesController();
+	controller.excluir_telefone();	
 });
 
 
@@ -50,21 +50,44 @@ $('#btn-livro-atualizar').click(function(){
 
 
 $('#inserir-telefone').click(function(){
-	var contato = new ContatosController();
-	contato.inserir_telefone();
+	var controller = new TelefonesController();
+	controller.inserir_telefone();
 });
 
 listaQtd = $('#qtd_lista_telefone');
 qtd = listaQtd.text();
 
 
-$('.del').click(function(){
+$('.deletar-telefone').click(function(){
 	id = $(this).children('p').text();
-	$(this).fadeOut('slow');
 	li = $(this).parentsUntil('ul');
-	console.log(id);
+	var controller = new TelefonesController();
+	controller.deletar_telefone(id,li);
 });
 
+$('.alterar-telefone').click(function()
+{
+	item = $(this).siblings('b');
+	telefoneElemento = $(this).prev();
+	telefone =  telefoneElemento.text();
+	var controller = new TelefonesController();
+	controller.inserir_form(telefone,telefoneElemento,item);
+});
+
+$('.atualizar-telefone').click(function(){
+	elementos = $(this).parentsUntil('ul');
+	telElemento = elementos.find('.telefoneInput');
+	idElemento = elementos.find('.id_telefone');
+
+	tel = telElemento.val();
+	id = idElemento.text();
+	
+	console.log(id);
+	console.log(tel);
+	
+	var controller = new TelefonesController();
+	controller.atualizar_telefone(tel,id,telElemento);
+});
 
 $('#atualizar').click(function(){
 	var contato = new ContatosController();
