@@ -98,3 +98,8 @@ $("#salvar-alteracao-usuario").click(function(){
 	var contato = new ContatosController();
 	contato.atualizar_usuario();
 });
+
+$("#excluir-livros").click(function(){
+	var controller = new LivroController();
+	controller.deletar();
+})

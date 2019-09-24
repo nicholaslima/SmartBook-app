@@ -1,5 +1,5 @@
 
-@extends('layout');
+@extends('layout')
 
 @section('titulo')
 	<h1 class="titulo">lista de usuarios</h1>

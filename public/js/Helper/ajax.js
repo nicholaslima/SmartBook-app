@@ -20,9 +20,11 @@ function Ajax(){
 		})
 		.done(function(){
 			sucesso(data);
+			console.log('sucesso');
 		})
 		.fail(function(){
 			erro(data);
+			console.log('erro');
 		})
 	}
 

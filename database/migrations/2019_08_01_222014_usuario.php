@@ -16,15 +16,11 @@ class Usuario extends Migration
         Schema::create('usuario',function(Blueprint $table){
             $table->increments('id');
             $table->string('nome');
-            $table->string('senha');
             $table->string('cpf');
             $table->string('endereco');
             $table->string('bairro');
             $table->string('cidade');
             $table->string('estado');
-
-        
-  
         }); 
     }
 

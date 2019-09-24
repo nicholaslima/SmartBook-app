@@ -22,7 +22,7 @@
 			<div class="btn-red">sign up<i class="fa fa-folder-open-o ml-1" aria-hidden="true"></i>
 			</div>
 		</a>
-		<a href="/login" >
+		<a href="/entrar" >
 			<div class="btn-red">login<i class="fa fa-folder-open-o ml-1" aria-hidden="true"></i>
 			</div>
 		</a>

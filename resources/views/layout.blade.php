@@ -26,76 +26,82 @@
 				<i class="fa fa-user-o" aria-hidden="true"></i>
 			</div>
 		</div>
-		@if(session('mensagem'))
-			<p class="alert alert-success">{{ session('mensagem') }}</p>
-		@endif
-
-		@if(session('erro'))
-			<p class="alert alert-danger">{{ session('erro') }}</p>
-		@endif
-
-		@if ($errors->any())
-		    <div class="alert alert-danger">
-		        <ul>
-		            @foreach ($errors->all() as $error)
-		                <li>{{ $error }}</li>
-		            @endforeach
-		        </ul>
-		    </div>
-		@endif
 	</header>
 	<div class="row">
 		<div class="col-md-2">
 			<nav class="menu ">
 				<a href="/" class="item_menu py-1 d-flex d-flex-row ">
-					<i class="fa fa-home p-2 fa-2x mt-2 ml-3"></i>
+					<i class="fa fa-home p-2 mt-2 ml-3"></i>
 					<p class="text-item invisible mt-3 d-none" >Home</p>
 				</a>
 
 				<a href="/livros" class="item_menu py-1 d-flex d-flex-row ">
-					<i class="fa fa-list p-2 fa-2x mt-2 ml-3"></i>
+					<i class="fa fa-list p-2  mt-2 ml-3"></i>
 					<p class="text-item invisible mt-3 d-none" >Livros</p>
 				</a>
-
+				
+				@auth
 				<a href="/cadastro_livro" class="item_menu py-1 d-flex d-flex-row ">
-					<i class="fa fa-plus p-2 fa-2x mt-2 ml-3"></i>
+					<i class="fa fa-plus p-2 mt-2 ml-3"></i>
 					<p class="text-item invisible mt-3 d-none" >adicionar livro</p>
 				</a>
+				@endauth
 
-				<a href="/login" class="item_menu py-1 d-flex d-flex-row">
-					<i class="fa fa-sign-in p-2 fa-2x mt-2 ml-3"></i>
+				<a href="/entrar" class="item_menu py-1 d-flex d-flex-row">
+					<i class="fa fa-sign-in p-2 mt-2 ml-3"></i>
 					<p class="text-item invisible mt-3 d-none" >login</p>
 				</a>
 
+				@auth
 				<a href="/lista_usuarios" class="item_menu py-1 d-flex d-flex-row">
-					<i class="fa fa-users p-2 fa-2x mt-2 ml-3"></i>
+					<i class="fa fa-users p-2 mt-2 ml-3"></i>
 					<p class="text-item invisible mt-3 d-none" >usuarios</p>
 				</a>
+				@endauth
 
 				<a href="/livros" class="item_menu py-1 d-flex d-flex-row">
-					<i class="fa fa-search p-2 fa-2x mt-2 ml-3"></i>
+					<i class="fa fa-search p-2 mt-2 ml-3"></i>
 					<p class="text-item invisible mt-3 d-none" >pesquisar Livros</p>
 				</a>
-
+				
+				@auth
 				<a href="/livros_reservados" class="item_menu py-1 d-flex d-flex-row">
-					<i class="fa fa-book p-2 fa-2x mt-2 ml-3"></i>
+					<i class="fa fa-book p-2 mt-2 ml-3"></i>
 					<p class="text-item invisible mt-3 d-none" >Livros Alugados</p>
 				</a>
 
 				<a href="/cadastro_usuario" class="item_menu py-1 d-flex d-flex-row">
-					<i class="fa fa-user-plus p-2 fa-2x mt-2 ml-3"></i>
+					<i class="fa fa-user-plus p-2 mt-2 ml-3"></i>
 					<p class="text-item invisible mt-3 d-none" >Cadastrar aluno</p>
 				</a>
 				
-				<a href="php/sair.php" class="item_menu py-1 d-flex d-flex-row">
-					<i class="fa fa-sign-out p-2 fa-2x mt-2 ml-3"></i>
+				<a href="/sair" class="item_menu py-1 d-flex d-flex-row">
+					<i class="fa fa-sign-out p-2 mt-2 ml-3"></i>
 					<p class="text-item invisible mt-3 d-none" >Sair</p>
 				</a>
+				@endauth
 			</nav>
 		</div>
 		
 
 		<div class="col-md-10">
+			@if(session('mensagem'))
+				<p class="alert alert-success">{{ session('mensagem') }}</p>
+			@endif
+
+			@if(session('erro'))
+				<p class="alert alert-danger">{{ session('erro') }}</p>
+			@endif
+
+			@if ($errors->any())
+			    <div class="alert alert-danger">
+			        <ul>
+			            @foreach ($errors->all() as $error)
+			                <li>{{ $error }}</li>
+			            @endforeach
+			        </ul>
+			    </div>
+			@endif
 			@yield('titulo')
 			@yield('conteudo')
 

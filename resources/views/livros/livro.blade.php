@@ -6,9 +6,9 @@
 @endsection
 
 @section('conteudo')
-<div>
+<div class="container">
 	<ul class="list-group">
-		<li class="list-group-item text-capitalize"><b>id:</b> {{  $livro->id }}</li>
+		<li class="list-group-item text-capitalize "><b>id:</b> {{  $livro->id }}</li>
 		<li class="list-group-item text-capitalize"><b>titulo:</b> {{  $livro->titulo }}</li>
 		<li class="list-group-item text-capitalize"><b>autor:</b> {{  $livro->autor }}</li>
 		<li class="list-group-item text-capitalize"><b>data:</b> {{  $livro->data }}</li>
@@ -16,13 +16,14 @@
 		<li class="list-group-item text-capitalize"><b>categoria:</b> {{  $livro->categoria }}</li>
 	</ul>
 	<div class="my-2 float-right row">
+		@auth
 		<button class="btn btn-danger text-capitalize btn-lg mx-1" data-target="#modal-excluir" data-toggle="modal">deletar</button>
 		<form action="/cadastro_livro" method="post">
 			@csrf
 			<input type="hidden" value="{{ $livro->id  }}" name="id">
 			<button type="submit" class="btn btn-primary text-capitalize btn-lg">atualizar</div>
 		</form>
-		
+		@endauth
 	</div>
 
 

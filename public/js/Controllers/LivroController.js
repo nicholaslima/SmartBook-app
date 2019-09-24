@@ -15,6 +15,8 @@ function LivroController()
 	var textoBtnAtualizar = $('#texto-btn-atualizar');
 	var msg = $('#msgUsuario');
 
+	ajax = new Ajax();
+
 	var livro = {
 		id: inputId.val(),
 		titulo: inputTitulo.val(),
@@ -93,5 +95,30 @@ function LivroController()
 			textoBtnAtualizar.text('atualizar');
 			setMsg('falha ao enviar uma requisição','alert-info');
 		})
+	}
+
+	this.deletar = function()
+	{
+		var livrosIds = $('.livrosInput:checked');
+		var inputToken = $('input[name=_token]');
+
+		var ids = JSON.stringify(livrosIds);
+
+		livros = {
+			_token: inputToken.val(),
+			livros: ids
+		};
+			
+		sucesso = function(data){
+			setMsg("livros deletado com sucesso","alert-success");
+			console.log(data);
+		};
+
+		erro = function(data){
+			setMsg("erro ao enviar uma requisição","alert-danger");
+			console.log(data);
+		};
+
+		ajax.post('/deletar_livros',livros,sucesso,erro);
 	}
 }

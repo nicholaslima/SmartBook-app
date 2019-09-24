@@ -9,6 +9,9 @@ use App\LivroUsuario;
 use App\Helpers\CriadorTelefones;
 use App\Helpers\ExclusaoUsuario;
 use App\Helpers\CriadorEmails;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\User;
 
 class usuarioController extends Controller
 {
@@ -49,12 +52,19 @@ class usuarioController extends Controller
 		DB::beginTransaction();
 			$usuario = Usuario::create([
 				'nome' => $request->nome,
-				'senha' => $request->senha,
 				'cpf' => $request->cpf,
 				'endereco' => $request->endereco,
 				'bairro' => $request->bairro,
 				'cidade' => $request->cidade,
 				'estado' => $request->estado
+			]);
+
+			$senha = $request->senha;
+			$senha = Hash::make($senha);
+
+			User::create([
+				'email' => $request->username,
+				'password' => $senha
 			]);
 
 			$CriadorTelefones = new CriadorTelefones();
@@ -153,27 +163,26 @@ class usuarioController extends Controller
 	}
 
 
-	public function login(Request $request)
+	public function loginUser(Request $request)
 	{
 		$email = $request->email;
-		$senha = $request->senha;
+		$senha = $request->password;
 
-		$usuario = DB::table('emails')->where('email',$email)->first();
-
-		if(is_null($usuario)){
-			$request->session()
-				->flash(
-					'mensagem',
-					'email ou senha incorreta'
-				);	
-
-			return redirect('/');
+		if(!auth::attempt([
+			'email' => $email,
+			'password' => $senha
+		])){
+			$request->session()->flash('mensagem',
+				'login ou senha incorretas'
+			);
+			
+			return redirect()
+				->back();
 		};
 
-		$request->session()->flash('mensagem','login efetuado com sucesso');
-
-		$request->session()->put('usuario','true');
-		$request->session()->put('id_usuario',$usuario->id);
+		$request->session()->flash('mensagem',
+			'login do usuario realizado com sucesso'
+		);
 
 		return redirect('/livros');
 	}

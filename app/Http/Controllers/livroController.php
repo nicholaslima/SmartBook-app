@@ -118,4 +118,13 @@ class livroController extends Controller
 	{
 		return view('livros.pesquisa');
 	}
+
+	public function deletar_livros(Request $request)
+	{
+		$livros = $request->livros;
+
+		foreach($livros as $livro){
+			Livro::destroy($livro);
+		};
+	}
 }

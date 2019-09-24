@@ -4,7 +4,7 @@
 
 
 @section('titulo')
-	<h1 class="text-capitalize my-3"> Cadastrar Usuário </h1>
+	<h2 class="titulo text-capitalize my-4"> Cadastrar Usuário </h2>
 @endsection
 
 
@@ -23,12 +23,12 @@
 
 				<div class="form-group col-md-4">
 					<label class="mr-3 col-md-1"> username: </label> 
-					<input type="text" name="senha" class="form-control-lg form-control m-1 col-md-10" required>
+					<input type="text" name="username" class="form-control-lg form-control m-1 col-md-10" required>
 				</div>
 
 				<div class="form-group col-md-4">
 					<label class="mr-3 col-md-1"> Senha: </label> 
-					<input type="text" name="senha" class="form-control-lg form-control m-1 col-md-10" required>
+					<input type="password" name="senha" class="form-control-lg form-control m-1 col-md-10" required>
 				</div>
 			</div>
 
