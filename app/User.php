@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Reservas;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function reservas()
+    {
+        return $this->hasMany(Reservas::class);
+    }
+
 }

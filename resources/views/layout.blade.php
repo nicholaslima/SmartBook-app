@@ -10,14 +10,14 @@
 <body>
 
 	<header class="">
-		<a href="/"><img src="{{ asset('imgs/logo_azul.jpeg') }}" alt="logo aplicativo" id="logo"></a>
-		<div class="topo">
+		
+		<div class="topo py-5">
 			<i class="fa fa-bars fa-2x icone_menu" aria-hidden="true"></i>
 			<div class="form-search">
 					<form class="form-input d-flex d-flex-row" method="post" action="/livros_nome">
 						@csrf
-						<input name="titulo" type="text" class="rounded-pill form-control" />
-						<input type="submit" value="buscar" class="btn btn-success ml-2">
+						<input name="titulo" type="text" class="search rounded-pill form-control" />
+						<input type="submit" value="buscar" class="btn-dark border border-dark ml-2">
 					</form>
 			</div>
 			<div class="icones">
@@ -28,58 +28,61 @@
 		</div>
 	</header>
 	<div class="row">
-		<div class="col-md-2">
-			<nav class="menu ">
+		<div class="">
+			<nav class="menu pl-2">
 				<a href="/" class="item_menu py-1 d-flex d-flex-row ">
 					<i class="fa fa-home p-2 mt-2 ml-3"></i>
-					<p class="text-item invisible mt-3 d-none" >Home</p>
+					<p class="text-item invisible mt-2 d-none" >Home</p>
 				</a>
 
 				<a href="/livros" class="item_menu py-1 d-flex d-flex-row ">
 					<i class="fa fa-list p-2  mt-2 ml-3"></i>
-					<p class="text-item invisible mt-3 d-none" >Livros</p>
+					<p class="text-item invisible mt-2 d-none" >Livros</p>
 				</a>
 				
 				@auth
 				<a href="/cadastro_livro" class="item_menu py-1 d-flex d-flex-row ">
 					<i class="fa fa-plus p-2 mt-2 ml-3"></i>
-					<p class="text-item invisible mt-3 d-none" >adicionar livro</p>
+					<p class="text-item invisible mt-2 d-none" >adicionar livro</p>
 				</a>
 				@endauth
 
-				<a href="/entrar" class="item_menu py-1 d-flex d-flex-row">
-					<i class="fa fa-sign-in p-2 mt-2 ml-3"></i>
-					<p class="text-item invisible mt-3 d-none" >login</p>
-				</a>
+
 
 				@auth
 				<a href="/lista_usuarios" class="item_menu py-1 d-flex d-flex-row">
 					<i class="fa fa-users p-2 mt-2 ml-3"></i>
-					<p class="text-item invisible mt-3 d-none" >usuarios</p>
+					<p class="text-item invisible mt-2 d-none" >usuarios</p>
 				</a>
 				@endauth
 
 				<a href="/livros" class="item_menu py-1 d-flex d-flex-row">
 					<i class="fa fa-search p-2 mt-2 ml-3"></i>
-					<p class="text-item invisible mt-3 d-none" >pesquisar Livros</p>
+					<p class="text-item invisible mt-2 d-none" >pesquisar Livros</p>
 				</a>
 				
 				@auth
 				<a href="/livros_reservados" class="item_menu py-1 d-flex d-flex-row">
 					<i class="fa fa-book p-2 mt-2 ml-3"></i>
-					<p class="text-item invisible mt-3 d-none" >Livros Alugados</p>
-				</a>
-
-				<a href="/cadastro_usuario" class="item_menu py-1 d-flex d-flex-row">
-					<i class="fa fa-user-plus p-2 mt-2 ml-3"></i>
-					<p class="text-item invisible mt-3 d-none" >Cadastrar aluno</p>
-				</a>
-				
-				<a href="/sair" class="item_menu py-1 d-flex d-flex-row">
-					<i class="fa fa-sign-out p-2 mt-2 ml-3"></i>
-					<p class="text-item invisible mt-3 d-none" >Sair</p>
+					<p class="text-item invisible mt-2 d-none" >Livros Alugados</p>
 				</a>
 				@endauth
+				<a href="/cadastro_usuario" class="item_menu py-1 d-flex d-flex-row">
+					<i class="fa fa-user-plus p-2 mt-2 ml-3"></i>
+					<p class="text-item invisible mt-2 d-none" >Cadastrar aluno</p>
+				</a>
+				<div class="mt-5">
+					<a href="/entrar" class="item_menu py-1 d-flex d-flex-row">
+						<i class="fa fa-sign-in p-2 mt-2 ml-3"></i>
+						<p class="text-item invisible mt-2 d-none" >login</p>
+					</a>
+					@auth
+					<a href="/sair" class="item_menu py-1 d-flex d-flex-row">
+						<i class="fa fa-sign-out p-2 mt-2 ml-3"></i>
+						<p class="text-item invisible mt-2 d-none" >Sair</p>
+					</a>
+					@endauth
+				</div>
 			</nav>
 		</div>
 		

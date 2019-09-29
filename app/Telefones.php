@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+use App\Contatos;
+use App\Usuario;
 
 use Illuminate\Database\Eloquent\Model;
 

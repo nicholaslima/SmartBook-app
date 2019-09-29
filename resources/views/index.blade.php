@@ -7,6 +7,10 @@
 <main class="principal container">
 	<div id="livro"></div>
 	<div class="biblioteca-desc">
+		@auth
+			<h3 class="titulo">Bem Vindo usuario: {{ $user->email }}</h3>
+
+		@endauth
 		<div class="my-3">
 			<h1 class="titulo">smart book</h1>
 			<div class="desc">Bem vindo! a nossa biblioteca online onde voce poderá se cadastrar para consultar livros e fazer sua reserva.

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Emails;
 use App\Telefones;
+use App\Livro;
 
 class Usuario extends Model
 {
@@ -14,7 +15,6 @@ class Usuario extends Model
 
     protected $fillable = [
     	'nome',
-    	'senha',
     	'cpf',
     	'endereco',
     	'bairro',

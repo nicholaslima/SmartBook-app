@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Reservas;
 use Illuminate\Database\Eloquent\Model;
 
 class Livro extends Model
@@ -14,12 +14,13 @@ class Livro extends Model
     	'autor',
     	'data',
     	'paginas',
+        'reservado',
     	'categoria'
     ];
 
-    public function usuarios()
+    public function reserva()
     {
-    	return $this->hasMany(Usuario::class);
+    	return $this->belongsTo(Reservas::class);
     }
 
 }

@@ -13,7 +13,7 @@ class livroController extends Controller
 	}
 	public function lista()
 	{
-		$livros = Livro::all();
+		$livros = Livro::where('reservado',false)->get();
 
 		return view('livros.lista',[
 			'livros' => $livros

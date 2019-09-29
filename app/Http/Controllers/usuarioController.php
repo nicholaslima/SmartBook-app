@@ -5,13 +5,14 @@ use IlLuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Usuario;
 use App\Telefones;
-use App\LivroUsuario;
+use App\Reservas;
 use App\Helpers\CriadorTelefones;
 use App\Helpers\ExclusaoUsuario;
 use App\Helpers\CriadorEmails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Livro;
 
 class usuarioController extends Controller
 {
@@ -81,7 +82,7 @@ class usuarioController extends Controller
 				"$usuario->nome  cadastrado com sucesso"
 			);
 
-		return redirect('/login');
+		return redirect('/entrar');
 	}
 
 	public function addTelefone(Request $request){
@@ -188,29 +189,34 @@ class usuarioController extends Controller
 	}
 
 	public function reservaLivro(Request $request){
-		$id_livro = $request->id_livro;
-		$id_usuario = $request->session()->get('id_usuario');
 
-		LivroUsuario::create([
+		$id_livro = $request->id;
+		$id_user = Auth::User()->id;
+		$user = Auth::User();
+
+		$livro = Livro::where('id', $id_livro)
+					->update(['reservado' => true]);
+
+		Reservas::create([
 			'livro_id' => $id_livro,
-			'usuario_id' => $id_usuario,
+			'user_id' => $id_user,
+			'data_reserva' => date('d/m/y'),
+			'data_entrega' => date('d/m/y')
 		]);
-
 
 		$request->session()->flash('mensagem','livro reservado com sucesso');
 
-		return redirect('/');
+		return redirect('/livros');
 
 	}
 
 	public function livrosReservados(Request $request)
 	{
-		$id_usuario = $request->session()->get('id_usuario');
-		$usuario_livros = LivroUsuario::where('usuario_id',$id_usuario)->get();
-		
-		$usuario->livros();
 
-		return view('/usuario.livros',['livros' => $livros]);
+		$user = auth::User();
+		$reservas = $user->reservas()->get();
+
+		return view('/usuario.livros',['reservas' => $reservas]);
 	}
 
 

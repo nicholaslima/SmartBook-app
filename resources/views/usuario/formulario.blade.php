@@ -4,7 +4,7 @@
 
 
 @section('titulo')
-	<h2 class="titulo text-capitalize my-4"> Cadastrar Usuário </h2>
+	<h2 class="titulo text-dark text-capitalize my-4 pr-3"> Cadastrar Usuário </h2>
 @endsection
 
 
@@ -101,7 +101,7 @@
 					</div>
 				</div>
 			</div>
-			<input class="btn-cadastro-azul float-right mr-5" type="submit" value="Cadastrar"> 
+			<input class="btn-azul float-right mr-5" type="submit" value="Cadastrar"> 
 		</form> 
 </div>
 

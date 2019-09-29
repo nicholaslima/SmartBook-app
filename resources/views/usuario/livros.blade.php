@@ -2,15 +2,18 @@
 @extends('layout')
 
 @section('titulo')
-	<h3>lisvros reservados</h3>
+	<h2 class="titulo my-3">livros reservados</h2>
 @endsection
 
 
 @section('conteudo')
 	<div>
 		<ul class="list-group">
-			@foreach($livros as $livro)
-			<li class="list-group-item">{{ $livro->titulo }}</li>
+			@foreach($reservas as $reserva)
+			<?php $livro = $reserva->livro; ?>
+			<li class="list-group-item">
+				livro {{ $livro->titulo }}
+			</li>
 			@endforeach
 		</ul>
 	</div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class LivroUsuario extends Migration
+class Reservas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class LivroUsuario extends Migration
      */
     public function up()
     {
-        Schema::create('livro_usuario',function(Blueprint $table){
+        Schema::create('reservas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('usuario_id');
             $table->integer('livro_id');
-
-            $table->foreign('usuario_id')
-                ->references('id')
-                ->on('usuario');
+            $table->integer('user_id');
+            $table->string('data_reserva');
+            $table->string('data_entrega');
 
             $table->foreign('livro_id')
                 ->references('id')
@@ -35,6 +33,6 @@ class LivroUsuario extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('livro_usuario');
+        Schema::dropIfExists('reservas');
     }
 }

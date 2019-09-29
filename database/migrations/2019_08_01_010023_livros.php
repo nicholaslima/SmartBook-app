@@ -20,6 +20,7 @@ class Livros extends Migration
             $table->string('data');
             $table->string('paginas');
             $table->string('categoria');
+            $table->boolean('reservado')->default(false);
             $table->timestamps();
         });
     }

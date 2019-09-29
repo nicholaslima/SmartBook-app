@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+use App\Emails;
+use App\Telefones;
 
 use Illuminate\Database\Eloquent\Model;
 
