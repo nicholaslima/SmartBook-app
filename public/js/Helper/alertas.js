@@ -1,6 +1,8 @@
+	
+function Alertas(){
 	var msg = $('.msg');
 
-	var setMsg = function(mensg,alerta){
+	this.setMsg = function(mensg,alerta){
 		msg.text(mensg);
 		msg.toggleClass('invisible');
 		msg.slideDown();
@@ -10,3 +12,5 @@
 			msg.toggleClass('invisible '+alerta);	
 			},5000)
 	}
+}
+	

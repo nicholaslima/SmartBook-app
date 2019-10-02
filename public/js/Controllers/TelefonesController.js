@@ -3,6 +3,7 @@ function TelefonesController()
 {
 	this.qtd_telefone = $('#qtd_telefone');
 	ajax = new Ajax();
+	alerta = new Alertas();
 	telefoneObj = new TelefonesView();
 
 	this.add_telefone = function(){

@@ -29,7 +29,7 @@ Route::post('/livros_nome','livroController@pesquisa_por_nome');
 Route::get('/pesquisa_livro','livroController@pesquisaLivro');
 Route::post('/livros_pesquisa','livroController@pesquisa_Livros');
 Route::post('/deletar_livros','livroController@deletar_livros');
-
+Route::post('/reservarLivros','usuarioController@reservarLivros');
 
 Route::post('/inserir_telefone','usuarioController@addTelefone');
 Route::post('/atualizar_usuario','usuarioController@update');
@@ -51,6 +51,9 @@ Route::get('/livros_reservados', 'usuarioController@livrosReservados')
 
 Route::post('/reservar_livro', 'usuarioController@reservaLivro')
 		->middleware('auth');
+		
+Route::post('/entrega_livro', 'usuarioController@entregaLivro')
+		->middleware('auth');
 
 Route::post('/usuario', 'usuarioController@usuario')
 		->middleware('auth');
@@ -58,7 +61,6 @@ Route::post('/usuario', 'usuarioController@usuario')
 Route::delete('/excluir_usuario','usuarioController@destroy')
 		->middleware('auth');
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 

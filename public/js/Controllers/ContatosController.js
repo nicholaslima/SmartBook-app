@@ -17,6 +17,7 @@ function ContatosController()
 	this.idUsuarioElemento = $("#id_usuario");
 
 	ajax = new Ajax();	
+	alerta = new Alertas();
 
 	this.add_email = function(){
 		num_email++;
@@ -158,13 +159,13 @@ function ContatosController()
 
 		sucesso = function()
 		{
-			setMsg('usuario atualizado com sucesso','alert alert-success');
+			alerta.setMsg('usuario atualizado com sucesso','alert alert-success');
 			retirar_form();
 		};
 
 		erro = function()
 		{
-			setMsg('falha na atualização','alert alert-danger');
+			alerta.setMsg('falha na atualização','alert alert-danger');
 		};
 
 		ajax.post('/atualizar_usuario',usuario,sucesso,erro);

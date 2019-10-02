@@ -16,6 +16,7 @@ function LivroController()
 	var msg = $('#msgUsuario');
 
 	ajax = new Ajax();
+	alerta = new Alertas();
 
 	var livro = {
 		id: inputId.val(),
@@ -47,12 +48,7 @@ function LivroController()
 		inputCategoria.val('');
 	}
 
-	var setMsg = function(mensg,alerta){
-		msg.text(mensg);
-		msg.removeClass('invisible');
-		msg.addClass(alerta);
-	}
-
+	
 	this.inserirLivro = function(){
 		$.ajax({
 			url: '/inserir',
@@ -97,28 +93,44 @@ function LivroController()
 		})
 	}
 
-	this.deletar = function()
+	this.deletar = function(ids)
 	{
-		var livrosIds = $('.livrosInput:checked');
 		var inputToken = $('input[name=_token]');
-
-		var ids = JSON.stringify(livrosIds);
 
 		livros = {
 			_token: inputToken.val(),
 			livros: ids
 		};
 			
-		sucesso = function(data){
-			setMsg("livros deletado com sucesso","alert-success");
-			console.log(data);
+		sucesso = function(livros){
+			alerta.setMsg("livros deletados com sucesso","alert-success");
 		};
 
-		erro = function(data){
-			setMsg("erro ao enviar uma requisição","alert-danger");
-			console.log(data);
+		erro = function(livros){
+			alerta.setMsg("erro ao enviar uma requisição","alert-danger");
 		};
 
 		ajax.post('/deletar_livros',livros,sucesso,erro);
+	}
+	
+
+	this.reservar = function(ids)
+	{
+		var inputToken = $('input[name=_token]');
+
+		livros = {
+			_token: inputToken.val(),
+			livros: ids
+		};
+			
+		sucesso = function(livros){
+			alerta.setMsg('livros reservados com sucesso','alert-success');
+		};
+
+		erro = function(livros){
+			alerta.setMsg('erro ao enviar uma requisição','alert-danger');
+		};
+
+		ajax.post('/reservarLivros',livros,sucesso,erro);
 	}
 }

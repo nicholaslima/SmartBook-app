@@ -210,6 +210,20 @@ class usuarioController extends Controller
 
 	}
 
+	public function entregaLivro(Request $request)
+	{
+		$id_livro = $request->id_livro;
+
+		Livro::where('id',$id_livro)
+				->update(['reservado' => false]);
+
+		Reservas::where('livro_id',$id_livro)->delete();
+
+		$request->session()->flash("mensagem","livro entregue com sucesso");
+
+		return redirect('/livros_reservados');
+	}
+
 	public function livrosReservados(Request $request)
 	{
 
@@ -219,5 +233,21 @@ class usuarioController extends Controller
 		return view('/usuario.livros',['reservas' => $reservas]);
 	}
 
+	public function reservarLivros(Request $request)
+	{
+		$livros = $request->livros;
+		$id_user = Auth::User()->id;
 
+		foreach($livros as $livro){
+			Reservas::create([
+				'livro_id' => $livro,
+				'user_id' => $id_user,
+				'data_reserva' => date('d/m/y'),
+				'data_entrega' => date('d/m/y')
+			]);
+
+			Livro::where('id', $livro)
+					->update(['reservado' => true]);
+		};
+	}
 }

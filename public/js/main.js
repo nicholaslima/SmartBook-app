@@ -100,6 +100,36 @@ $("#salvar-alteracao-usuario").click(function(){
 });
 
 $("#excluir-livros").click(function(){
+	numLivros = $('#num_livros');
+	num = numLivros.text();
+
+	var ids = {};
+	for(var i = 0;i < num;i++){
+		livroId = $('#livro_'+i+':checked');
+		var id = livroId.val();
+		if(typeof id !== "undefined"){
+			ids[i] = id;
+		}
+	};	
+
 	var controller = new LivroController();
-	controller.deletar();
-})
+	controller.deletar(ids);
+});
+
+
+$('#reservar-livros').click(function(){
+	numLivros = $('#num_livros');
+	num = numLivros.text();
+
+	var ids = {};
+	for(var i = 0;i < num;i++){
+		livroId = $('#livro_'+i+':checked');
+		var id = livroId.val();
+		if(typeof id !== "undefined"){
+			ids[i] = id;
+		}
+	};	
+
+	var controller = new LivroController();
+	controller.reservar(ids);
+});
